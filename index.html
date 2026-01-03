@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Clicker</title>
+    <style>
+        body {
+            background: orange;
+            text-align: center;
+            padding: 20px;
+            font-family: Arial;
+        }
+        .cookie {
+            font-size: 100px;
+            cursor: pointer;
+        }
+        .counter {
+            font-size: 40px;
+            margin: 20px;
+            color: white;
+        }
+        button {
+            background: brown;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cookie Clicker</h1>
+    <div class="counter" id="counter">0 печенек</div>
+    <div class="cookie" onclick="clickCookie()">🍪</div>
+    <button onclick="buyUpgrade()">Улучшить (+1) - 10🍪</button>
+    
+    <script>
+        let cookies = 0;
+        let perClick = 1;
+        let upgradeCost = 10;
+        
+        function clickCookie() {
+            cookies += perClick;
+            updateDisplay();
+        }
+        
+        function buyUpgrade() {
+            if (cookies >= upgradeCost) {
+                cookies -= upgradeCost;
+                perClick += 1;
+                upgradeCost = Math.floor(upgradeCost * 1.5);
+                updateDisplay();
+            }
+        }
+        
+        function updateDisplay() {
+            document.getElementById('counter').textContent = 
+                cookies + ' печенек';
+        }
+    </script>
+</body>
+</html>
